@@ -16,6 +16,7 @@ final class SearchView: UIView {
     let tableView = UITableView()
     let emptyResultView = UIView()
     let emptyResultLabel = UILabel()
+    var musicButton = UIButton()
     
     // MARK: - Init
     
@@ -37,6 +38,7 @@ final class SearchView: UIView {
         self.addTableView()
         self.addEmptyResultView()
         self.setupConstraints()
+        self.addMusicButton()
     }
     
     private func addSearchBar() {
@@ -69,6 +71,21 @@ final class SearchView: UIView {
         self.emptyResultView.addSubview(self.emptyResultLabel)
     }
     
+    private func addMusicButton() {
+        self.musicButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 60))
+        self.musicButton.setTitle("Test", for: .normal)
+        self.musicButton.setTitleColor(.systemBlue, for: .normal)
+        self.musicButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        self.addSubview(self.musicButton)
+    }
+    
+    @objc private func tappedButton() {
+        let rootVC = UIViewController()
+        let musicVC = UINavigationController(rootViewController: rootVC)
+
+        musicVC.present(musicVC, animated: true, completion: nil)
+    }
+    
     private func setupConstraints() {
         let safeArea = self.safeAreaLayoutGuide
         
@@ -88,7 +105,9 @@ final class SearchView: UIView {
             self.emptyResultView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             self.emptyResultLabel.topAnchor.constraint(equalTo: self.emptyResultView.topAnchor, constant: 12.0),
             self.emptyResultLabel.leadingAnchor.constraint(equalTo: self.emptyResultView.leadingAnchor),
-            self.emptyResultLabel.trailingAnchor.constraint(equalTo: self.emptyResultView.trailingAnchor)
+            self.emptyResultLabel.trailingAnchor.constraint(equalTo: self.emptyResultView.trailingAnchor),
+            
+//            self.musicButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 1.0)
             ])
     }
 }

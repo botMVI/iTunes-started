@@ -15,9 +15,8 @@ class AppWhatsNewView: AppDetailHeaderView {
         let mainLabel = UILabel()
         mainLabel.translatesAutoresizingMaskIntoConstraints = false
         mainLabel.textColor = .black
-        mainLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        mainLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
         mainLabel.numberOfLines = 0
-        
         return mainLabel
     }()
     
@@ -26,7 +25,7 @@ class AppWhatsNewView: AppDetailHeaderView {
         let versionHistoryBtn = UIButton()
         versionHistoryBtn.translatesAutoresizingMaskIntoConstraints = false
         versionHistoryBtn.setTitle("История версий", for: .normal)
-        versionHistoryBtn.backgroundColor = .systemBlue
+        versionHistoryBtn.setTitleColor(.systemBlue, for: .normal)
         
         return versionHistoryBtn
     }()
@@ -36,7 +35,7 @@ class AppWhatsNewView: AppDetailHeaderView {
         let versionLabel = UILabel()
         versionLabel.translatesAutoresizingMaskIntoConstraints = false
         versionLabel.textColor = .lightGray
-        versionLabel.font = UIFont(name: "ALNile", size: 12.0)
+        versionLabel.font = UIFont(name: "ALNile", size: 18.0)
         versionLabel.numberOfLines = 1
         
         return versionLabel
@@ -47,8 +46,8 @@ class AppWhatsNewView: AppDetailHeaderView {
         let whatsNewLabel = UILabel()
         whatsNewLabel.translatesAutoresizingMaskIntoConstraints = false
         whatsNewLabel.textColor = .black
-        whatsNewLabel.font = UIFont(name: "ALNile", size: 14.0)
-        whatsNewLabel.numberOfLines = 1
+        whatsNewLabel.font = UIFont(name: "ALNile", size: 20.0)
+        whatsNewLabel.numberOfLines = 0
         
         return whatsNewLabel
     }()
@@ -58,7 +57,7 @@ class AppWhatsNewView: AppDetailHeaderView {
         let daysAgoLabel = UILabel()
         daysAgoLabel.translatesAutoresizingMaskIntoConstraints = false
         daysAgoLabel.textColor = .lightGray
-        daysAgoLabel.font = UIFont(name: "ALNile", size: 12.0)
+        daysAgoLabel.font = UIFont(name: "ALNile", size: 18.0)
         daysAgoLabel.numberOfLines = 1
         
         return daysAgoLabel
@@ -84,21 +83,23 @@ class AppWhatsNewView: AppDetailHeaderView {
         self.addSubview(daysAgoLabel)
         
         NSLayoutConstraint.activate([
-            mainLabel.topAnchor.constraint(equalTo: ratingLabel.topAnchor, constant: 12.0),
+            mainLabel.topAnchor.constraint(equalTo: ratingLabel.bottomAnchor, constant: 12.0),
             mainLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16.0),
-            mainLabel.heightAnchor.constraint(equalToConstant: 120.0),
-            mainLabel.widthAnchor.constraint(equalToConstant: 120.0),
             
-            versionLabel.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 12.0),
+            
+            versionLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 12.0),
             versionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16.0),
-            versionLabel.rightAnchor.constraint(equalTo: daysAgoLabel.rightAnchor, constant: 16.0),
             
-            versionHistoryBtn.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12.0),
-            versionHistoryBtn.leftAnchor.constraint(equalTo: mainLabel.leftAnchor, constant: 12.0),
-            versionHistoryBtn.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: 16.0),
+            versionHistoryBtn.leftAnchor.constraint(equalTo: mainLabel.rightAnchor, constant: 30.0),
+            versionHistoryBtn.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16.0),
             
+            whatsNewLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 12.0),
+            whatsNewLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16.0),
+            whatsNewLabel.widthAnchor.constraint(equalToConstant: 300.0),
             
-        
+            daysAgoLabel.topAnchor.constraint(equalTo: versionHistoryBtn.bottomAnchor, constant: 12.0),
+            daysAgoLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16.0),
+            daysAgoLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

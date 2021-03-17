@@ -18,6 +18,10 @@ class AppDetailHeaderViewController: UIViewController {
         return self.view as! AppDetailHeaderView
     }
     
+    private var appWhatsNewView: AppWhatsNewView {
+        return self.view as! AppWhatsNewView
+    }
+    
     init(app: ITunesApp) {
         self.app = app
         
@@ -30,6 +34,8 @@ class AppDetailHeaderViewController: UIViewController {
     
     override func loadView() {
         self.view = AppDetailHeaderView()
+        self.view = AppWhatsNewView()
+        
     }
     
     override func viewDidLoad() {
@@ -43,6 +49,11 @@ class AppDetailHeaderViewController: UIViewController {
         appDetailHeaderView.titleLabel.text = app.appName
         appDetailHeaderView.subtitleLabel.text = app.company
         appDetailHeaderView.ratingLabel.text = app.averageRating.flatMap { "\($0)" }
+        
+        appWhatsNewView.mainLabel.text = "Что нового"
+        appWhatsNewView.versionLabel.text = "Вресия 5.2"
+        appWhatsNewView.whatsNewLabel.text = "- Различные обновления и улучшения"
+        appWhatsNewView.daysAgoLabel.text = "6 day ago"
     }
     
     private func downloadImage() {

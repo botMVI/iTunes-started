@@ -50,7 +50,6 @@ class AppDetailHeaderView: UIView {
         button.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         button.layer.cornerRadius = 16.0
         button.layer.masksToBounds = true
-        
         return button
     }()
     
